@@ -1,0 +1,126 @@
+<app-auth-content>
+    <div class="app-title">
+        <div>
+          <h1>
+            <i class="fa fa-users"></i>
+            <span *ngIf="!patientIdCard"> เพิ่มคนไข้ใหม่ </span>
+            <span *ngIf="patientIdCard"> แก้ไขข้อมูลคนไข้ </span>
+          </h1>
+          <p>Create or edit patient</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item">
+            <a *ngIf="!patientIdCard" href="/auth/patients-create">เพิ่มคนไข้ใหม่</a>
+            <a *ngIf="patientIdCard">แก้ไขข้อมูลคนไข้</a>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <!-- Head --> 
+             <div class="tile-title-w-btn">
+               <h3 class="title">
+                 <span *ngIf="!patientIdCard">
+                  <i class="fa fa-plus"></i> เพิ่มคนไข้ใหม่
+                 </span>
+                 <span *ngIf="patientIdCard">
+                  <i class="fa fa-edit"></i> แก้ไขข้อมูลคนไข้
+                 </span>
+               </h3>
+             </div>
+ 
+             <!-- Form --> 
+             <div class="tile-body">
+               <form [formGroup]="form" (submit)="onSubmit()">
+                 <div class="row">
+                   <div class="col-sm-3">
+                     <div class="form-group">
+                      <img *ngIf="!form.value.image" src="assets/images/no-image-profile.png" class="img-fluid img-thumbnail">
+                      <img *ngIf="form.value.image" [src]="form.value.image" class="img-fluid img-thumbnail">
+                     </div>
+                     <div class="form-group">
+                      <input type="file" (change)="onConvertImage(inputFile)" #inputFile>
+                    </div>
+                   </div>
+
+                   <div class="col-sm-3">
+                    <div class="form-group">
+                     <img *ngIf="!form.value.image2" src="assets/images/no-image-profile.png" class="img-fluid img-thumbnail">
+                     <img *ngIf="form.value.image2" [src]="form.value.image2" class="img-fluid img-thumbnail">
+                    </div>
+                    <div class="form-group">
+                     <input type="file" (change)="onConvertImage2(inputFile2)" #inputFile2>
+                   </div>
+                  </div>
+
+                   <div class="col-sm-6">
+                     <div class="form-group">
+                       <label for="">OPD.No</label>
+                       <input type="text" class="form-control" placeholder="กรุณากรอกข้อมูล" formControlName="opd">
+                     </div>
+
+                     <div class="form-group">
+                      <label for="">เลขบัตรประชาชน</label>
+                      <input type="text" class="form-control" placeholder="เลขบัตรประชาชน 13 หลัก ไม่มี -" formControlName="idcard">
+                    </div>
+ 
+                     <div class="row">
+                       <div class="col-sm-6">
+                         <div class="form-group">
+                           <label for="">ชื่อ</label>
+                           <input type="text" class="form-control" placeholder="กรุณากรอกข้อมูล" formControlName="firstname">
+                         </div>
+                       </div>
+                       <div class="col-sm-6">
+                         <div class="form-group">
+                           <label for="">นามสกุล</label>
+                           <input type="text" class="form-control" placeholder="กรุณากรอกข้อมูล" formControlName="lastname">
+                         </div>
+                       </div>
+                     </div>
+ 
+                     <div class="form-group">
+                       <label for="">สิทธิการรักษา</label>
+                        <input type="text" class="form-control" placeholder="กรุณากรอกข้อมูล" formControlName="type">
+                     </div>
+
+                     <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="">วันเกิด</label>
+                          <!-- <input type="text" class="form-control" placeholder="กรุณากรอกข้อมูล" formControlName="age"> -->
+                          <input bsDatepicker placement="left"
+                          [bsConfig]="{ containerClass: 'theme-red'}"
+                          type="text" class="form-control" placeholder="ตัวอย่าง : 23/11/1997" formControlName="birthdate">
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="">เพศ</label>
+                          <select class="form-control" formControlName="sex">
+                            <option value="">เลือกเพศ</option>
+                            <option *ngFor="let item of sexItems" [value]="item">
+                              {{ item }}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                   </div>
+                 </div>
+ 
+                 <hr>
+                 <div class="form-group">
+                   <button type="submit" class="btn btn-primary">
+                     <i class="fa fa-save"></i>บันทึกข้อมูล
+                   </button>
+                 </div>
+               </form>
+             </div>
+           </div>
+        </div>
+      </div>
+</app-auth-content>

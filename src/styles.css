@@ -1,1 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'ngx-bootstrap/datepicker/bs-datepicker.css';
+
+.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+/* .theme-green .bs-datepicker-head {
+    background-color: red;
+};
+
+.theme-green .bs-datepicker-body table td.week span {
+    color: red;
+}; */
+
+.btn-primary {
+    color: #FFF;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #FFF;
+    background-color: #ac2936;
+    border-color: #ac2936;
+}
+.btn-primary:hover {
+    color: #FFF;
+    background-color: #ac2936;
+    border-color: #ac2936;
+}
+
+::selection {
+    color: #FFF;
+    background-color: #ac2936;
+}
+
+.app-header {
+    background-color: #dc3545;
+}
+
+.app-header__logo {
+    background-color: #ac2936;
+}
+
+.app-sidebar__toggle:focus, .app-sidebar__toggle:hover {
+    color: #fff;
+    background-color: #ac2936;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #FFF;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.page-link {
+    color: #dc3545;
+}
+
+a {
+    color: #dc3545;
+}
+
+.material-half-bg .cover {
+    background-color: #dc3545;
+    height: 50vh;
+}
+
+.animated-checkbox input[type="checkbox"]:checked + .label-text:before {
+    color: #dc3545;
+}

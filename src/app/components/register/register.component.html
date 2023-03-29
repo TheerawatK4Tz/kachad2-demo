@@ -3,10 +3,10 @@
   </section>
   <section class="login-content">
     <div class="logo">
-      <h1>ThaiRedCross</h1>
+      <h1>Kachad2 Homeless</h1>
     </div>
     <div class="login-box">
-      <form class="login-form" >
+      <form class="login-form" [formGroup]="form" (submit)="onSubmit()">
         <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user-plus"></i>ลงทะเบียน</h3>
         <div class="form-group">
             <label class="control-label">ชื่อ</label>
