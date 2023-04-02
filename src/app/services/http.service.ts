@@ -10,8 +10,8 @@ export class HttpService {
     constructor(private http: HttpClient) {
     }
 
-    private address: string = 'http://localhost:8081/';
-    // private address: string = 'https://kachad-fah-87ll0x.5sc6y6-4.usa-e2.cloudhub.io/';
+    // private address: string = 'http://localhost:8081/';
+    private address: string = 'https://kachad-fah-87ll0x.5sc6y6-4.usa-e2.cloudhub.io/';
 
     // ส่งข้อมูลแบบ Get method
     requestGet(url: string, accessToken?: string ) { 
