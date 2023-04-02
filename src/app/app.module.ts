@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AppRouting } from './app.routing';
-// import { SharedModule } from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     AppRouting,
     BrowserAnimationsModule,
-    // SharedModule,
+    SharedModule,
     HttpClientModule
   ],
   providers: [],

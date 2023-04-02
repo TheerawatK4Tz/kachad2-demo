@@ -7,7 +7,7 @@ declare const App: any;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Kachad2';
+  title = 'ThaiRedCross';
 
   ngOnInit() {
     App.initialLoadPage();

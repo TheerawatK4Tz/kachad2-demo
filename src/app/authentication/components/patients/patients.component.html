@@ -1,0 +1,118 @@
+<app-auth-content>
+    <div class="app-title">
+        <div>
+          <h1><i class="fa fa-users"></i> รายชื่อคนไข้</h1>
+          <p>Patients list find and edit</p>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+          <li class="breadcrumb-item"><a href="/auth/patients">รายชื่อคนไข้</a></li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <div class="tile-title-w-btn">
+              <h3 class="title"><i class="fa fa-list"></i> รายการข้อมูลคนไข้
+              </h3>
+              
+              <!-- ค้นหา -->
+              <div class="form-group">
+                <!-- <div class="input-group">
+                  <div class="btn-group" dropdown>
+                    <button id="button-animated" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                      aria-controls="dropdown-animated">
+                        {{ searchType.value }}
+                      <span class="caret"></span>
+                    </button>
+                      <ul id="dropdown-animated" *dropdownMenu class="dropdown-menu"
+                          role="menu" aria-labelledby="button-animated">
+                        <li *ngFor="let item of searchTypeItems" role="menuitem"><a class="dropdown-item" (click)="searchType = item">
+                          {{ item.value }}
+                        </a>
+                      </li>
+                      </ul>
+                  </div>
+
+                  <div [ngSwitch]="searchType.key">
+                    <input *ngSwitchCase="'created'" bsDaterangepicker placement="left"
+                          [bsConfig]="{ containerClass: 'theme-red'}"
+                          type="text" [(ngModel)]="searchText" class="form-control" placeholder="ค้นหาข้อมูล">
+
+                  <input *ngSwitchDefault type="text" [(ngModel)]="searchText" class="form-control" placeholder="ค้นหาข้อมูล">
+                  </div>
+
+                  <div class="input-group-append">
+                    <button (click)="onSearchItem()" class="btn btn-primary" type="button">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div> -->
+                <div class="search-hero">
+                  <input class="form-control" type="text" name="search" [(ngModel)]="searchText" 
+                  autocomplete="off" placeholder=" ค้นหาข้อมูล">
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="tile-body" *ngIf="items">
+              <div class="table-responsive">
+                <table class="table">
+                  <!-- Head -->
+                  <thead>
+                    <tr>
+                      <th>ชื่อ</th>
+                      <th>นามสกุล</th>
+                      <th>เพศ</th>
+                      <th>อายุ</th>
+                      <th>เลขบัตรประชาชน</th>
+                      <th>สิทธิการรักษา</th>
+                      <th>OPD No.</th>
+                      <th>วันที่แอดมิท</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <!-- Body -->
+                  <tbody>
+                    <tr *ngFor="let item of items.items | filter:searchText | paginate: { itemsPerPage: 10, currentPage: p }">
+                      <td>{{ item.firstname }}</td>
+                      <td>{{ item.lastname }}</td>
+                      <td>{{ item.sex }}</td>
+                      <td>{{ item.age }}</td>
+                      <td>{{ item.idcard }}</td>
+                      <td>{{ item.type }}</td>
+                      <td>{{ item.opd }}</td>
+                      <td>{{ item.created | date : 'dd-MM-yyyy'}}</td>
+                      <!-- <td>{{ item.created | date : 'dd-MM-yyyy'}}</td> -->
+                      <td class="text-right">
+                        <i *ngIf="UserLogin.role == Role.Admin || UserLogin.role == Role.Employee" (click)="onUpdatePatient(item)" class="fa fa-edit cur"></i>
+                        <span *ngIf="UserLogin.role == Role.Admin || UserLogin.role == Role.Employee"> | </span>
+                        <i *ngIf="UserLogin.role == Role.Admin || UserLogin.role == Role.Employee" (click)="onDeletePatient(item)" class="fa fa-trash cur"></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <!-- Foot -->
+                  <tfoot>
+                    <tr>
+                      <th colspan="9">
+                        จำนวนคนไข้ทั้งหมดในขณะนี้ {{ items.totalItems }} คน
+                      </th>
+                    </tr>
+                  </tfoot>
+                </table>
+
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+                <!-- <pagination [(ngModel)]="startPage" [itemsPerPage]="limitPage" 
+                            (pageChanged)="onPageChanged($event)" [rotate]="false" 
+                            [maxSize]="10" previousText="หน้าก่อนหน้า" nextText="หน้าถัดไป" 
+                            [totalItems]="items.totalItems">
+                </pagination> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</app-auth-content>

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kachad2": {
+    "ThaiRedCross": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/kachad2",
+            "outputPath": "dist/thai-red-cross",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "kachad2:build:production"
+              "browserTarget": "ThaiRedCross:build:production"
             },
             "development": {
-              "browserTarget": "kachad2:build:development"
+              "browserTarget": "ThaiRedCross:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "kachad2:build"
+            "browserTarget": "ThaiRedCross:build"
           }
         },
         "test": {
@@ -96,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "28aa7130-8965-4c58-8c97-5a1625439b88"
+    "analytics": "0e477715-8a2f-4487-9a8c-6259fb8d9fef"
   }
 }
