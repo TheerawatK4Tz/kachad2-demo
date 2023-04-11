@@ -39,7 +39,7 @@ export class ProfileComponent implements IProfileComponent {
     this.account
         .onUpdateProfile(this.authen.getAuthenticated(), this.form.value)
         .then(() => this.alert.notify('แก้ไขข้อมูลสำเร็จ', 'info'))
-        .catch(err => this.alert.notify(err.Message));
+        .catch(err => this.alert.notify(err.error.Message));
     // console.log(this.form.value)
   }
 
@@ -87,6 +87,7 @@ export class ProfileComponent implements IProfileComponent {
         lastname: ['', Validators.required],
         position: ['', Validators.required],
         image: [null],
+        whos: this.authen.getAuthenticated()
       });
       // disable user
       this.form.get('user')?.disable();

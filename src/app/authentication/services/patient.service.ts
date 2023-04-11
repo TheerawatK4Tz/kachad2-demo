@@ -76,7 +76,7 @@ export class PatientService {
 
     // เพิ่มข้อมูลคนไข้
     createPatient(model: IPatient) {
-        return this.http.requestPost('api/create-patient', model)
+        return this.http.requestPost('api/create-patient', model, this.authen.getAuthenticated())
                     .toPromise() as Promise<IPatient>;
 
         // return new Promise<IPatient>((resolve, reject) => {

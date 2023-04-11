@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { AppURL } from 'src/app/app.url';
+import { AuthenService } from 'src/app/services/authen.service';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { SharedsService } from 'src/app/shared/services/shareds.service';
 import { ValidatorsService } from 'src/app/shared/services/validator.service';
@@ -25,7 +26,8 @@ export class PatientsCreateComponent implements IPatientsCreateComponent {
     private router: Router,
     private validators: ValidatorsService,
     private activatedRouter: ActivatedRoute,
-    private localeService: BsLocaleService
+    private localeService: BsLocaleService,
+    private authen: AuthenService
   ) {  
     // เปลี่ยน date picker เป็นภาษาไทย
     this.localeService.use('th')
@@ -53,17 +55,18 @@ export class PatientsCreateComponent implements IPatientsCreateComponent {
   // สร้างฟอร์ม
   private initialCreateFormData() {
     this.form = this.builder.group({
-        opd: ['', Validators.required],
+        opd: [''],
         idcard: ['', [Validators.required, this.validators.isIdCard]],
-        firstname: ['', Validators.required],
-        lastname: ['', Validators.required],
-        type: ['', Validators.required],
+        firstname: [''],
+        lastname: [''],
+        type: [''],
         birthdate: [''],
         sex: ['', Validators.required],
         image: [],
         image2: [],
         created: (new Date()),
-        detail: ['']
+        detail: [''],
+        whos: this.authen.getAuthenticated()
     });
   }
 

@@ -16,7 +16,7 @@ export class SharedsService {
   onConvertImage(input: HTMLInputElement) {
     return new Promise((resolve, reject) => {
         const imageTypes = ['image/jpeg', 'image/png'];
-        const imageSize = 300;
+        const imageSize = 600;
         // หากไม่มีการอัพโหลดภาพ
         if (input.files?.length == 0)
             return resolve(null);
@@ -25,8 +25,8 @@ export class SharedsService {
             return reject ({Message:'กรุณาอัพโหลดรูปภาพ jpeg หรือ png เท่านั้น'});
         }
         // ตรวจสอบขนาดไฟล์
-        if((input.files![0].size / 1024) > imageSize)
-            return reject({ Message: `รูปภาพขนาดใหญ่เกินไป กรุณาอัพโหลดรูปภาพขนาดไม่เกิน ${imageSize} KB`});
+        // if((input.files![0].size / 1024) > imageSize)
+        //     return reject({ Message: `รูปภาพขนาดใหญ่เกินไป กรุณาอัพโหลดรูปภาพขนาดไม่เกิน ${imageSize} KB`});
 
         const reader = new FileReader();
         reader.readAsDataURL(input.files![0]);
